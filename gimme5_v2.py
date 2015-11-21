@@ -52,8 +52,12 @@ def detect(filename):
         print "inner(contour)=", len(approx), " outer(hull)=", len(hull)
         #Centroid
         M = cv2.moments(cnt)
-        cx = int(M['m10']/M['m00'])
-        cy = int(M['m01']/M['m00'])
+	if M['m00'] != 0:
+	  cx = int(M['m10']/M['m00'])
+          cy = int(M['m01']/M['m00'])
+	else:
+	  cx = int(M['m10']/1)
+          cy = int(M['m01']/1)
         print cx,cy
         cv2.circle(img, (cx,cy), 2, (0,255,255), 1)
 
@@ -140,7 +144,7 @@ def main(flip_v = False, alpha = 128, device = "/dev/spidev0.0"):
       time.sleep(0.2) # give the overlay buffers a chance to initialize
       with Lepton(device) as l:
         while True:
-          time.sleep(1) #slow down
+          time.sleep(0.5) #slow down
 
           tmpfile = "tmp.png"
           image = capture(flip_v = False)
