@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="29cd3701-3dc5-4e87-9a45-45ccb519a718" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/readme.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Flir_Hack_HongKong-checkpoint.ipynb" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/Flir_Hack_HongKong-checkpoint.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Flir_Hack_HongKong.ipynb" afterPath="$PROJECT_DIR$/Flir_Hack_HongKong.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="pylepton.iws" />
     <ignored path=".idea/workspace.xml" />
