@@ -18,9 +18,7 @@ blank_buf = np.zeros((60, 80, 1), dtype=np.uint16)
 gray_thres = 120
 
 def detect(filename):
-  ori = cv2.imread(filename)
   img = cv2.imread(filename)
-  #gray = cv2.imread(filename,0)
   gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 
   #Detect
@@ -57,7 +55,7 @@ def detect(filename):
         cx = int(M['m10']/M['m00'])
         cy = int(M['m01']/M['m00'])
         print cx,cy
-        cv2.circle(img, (cx,cy), 2, (20,200,20), 1)
+        cv2.circle(img, (cx,cy), 2, (0,255,255), 1)
 
         ###Calc dist between each point and centroid
         dist_map = {}
@@ -82,7 +80,7 @@ def detect(filename):
                 xPrev = anchors_map[f][0][0]
                 yPrev = anchors_map[f][0][1]
                 distPrev = math.hypot( xPrev - x, yPrev - y)
-                if(distPrev <= 3):
+                if(distPrev <= 4):
                     too_close = True
                     break
 
@@ -144,7 +142,7 @@ def main(flip_v = False, alpha = 128, device = "/dev/spidev0.0"):
         while True:
           time.sleep(1) #slow down
 
-          tmpfile = "tmp.jpg"
+          tmpfile = "tmp.png"
           image = capture(flip_v = False)
           cv2.imwrite(tmpfile, image)
           #Added by sco
