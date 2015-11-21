@@ -4,8 +4,14 @@ import sys
 import numpy as np
 import cv2
 from pylepton import Lepton
+import picamera
+
 
 def capture(flip_v = False, device = "/dev/spidev0.0"):
+
+  with picamera.PiCamera() as camera:
+    camera.resolution = (640, 480)
+
   with Lepton(device) as l:
     a,_ = l.capture()
   if flip_v:
