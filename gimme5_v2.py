@@ -69,7 +69,7 @@ def detect(filename):
         ### Find the distinct nearest N points
         N=3
         anchors_map = {}
-        for d in sorted(dist_map)[:10]:
+        for d in sorted(dist_map):
             if len(anchors_map) >= N:
                 break
             x = dist_map[d][0][0]
