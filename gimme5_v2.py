@@ -20,7 +20,8 @@ gray_thres = 120
 def detect(filename):
   ori = cv2.imread(filename)
   img = cv2.imread(filename)
-  gray = cv2.imread(filename,0)
+  #gray = cv2.imread(filename,0)
+  gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 
   #Detect
   ret,thresh = cv2.threshold(gray, gray_thres, 255 ,1)
