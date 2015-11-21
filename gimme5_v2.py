@@ -15,6 +15,7 @@ import math
 a = np.zeros((240, 320, 3), dtype=np.uint8)
 lepton_buf = np.zeros((60, 80, 1), dtype=np.uint16)
 blank_buf = np.zeros((60, 80, 1), dtype=np.uint16)
+gray_thres = 120
 
 def detect(filename):
   ori = cv2.imread(filename)
@@ -22,7 +23,7 @@ def detect(filename):
   gray = cv2.imread(filename,0)
 
   #Detect
-  ret,thresh = cv2.threshold(gray,120,255,1)
+  ret,thresh = cv2.threshold(gray, gray_thres, 255 ,1)
   contours,h = cv2.findContours(thresh,1,2)
 
   found = False
@@ -66,7 +67,7 @@ def detect(filename):
             dist_map[dist] = xy
 
         ### Find the distinct nearest N points
-        N=4
+        N=3
         anchors_map = {}
         for d in sorted(dist_map)[:10]:
             if len(anchors_map) >= N:
