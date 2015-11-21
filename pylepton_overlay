@@ -16,11 +16,12 @@ def main(flip_v = False, alpha = 128, device = "/dev/spidev0.0"):
   lepton_buf = np.zeros((60, 80, 1), dtype=np.uint16)
 
   with picamera.PiCamera() as camera:
-    camera.resolution = (640, 480)
+    #camera.resolution = (640, 480)
+    camera.resolution = (80, 60)
     camera.framerate = 24
     camera.vflip = flip_v
     camera.start_preview()
-    camera.fullscreen = True
+    camera.fullscreen = False
     # Add the overlay directly into layer 3 with transparency;
     # we can omit the size parameter of add_overlay as the
     # size is the same as the camera's resolution
