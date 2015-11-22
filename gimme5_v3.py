@@ -104,6 +104,7 @@ def detect(filename):
 		   round(anchors_map.keys()[1]*10.0, 3),
 		   round(anchors_map.keys()[2]*10.0, 3))
            avg = round( (measure[0] + measure[1] + measure[2] )/3.0 , 3)
+           cv2.putText(img, str(avg), (2,58), cv2.FONT_HERSHEY_SIMPLEX, 0.3, 255)
            print sorted(measure)
            print avg
         break
