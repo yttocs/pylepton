@@ -100,11 +100,12 @@ def detect(filename):
             cv2.circle(img,closest_xy , 1, (20,200,20), 1)
             cv2.line(img, closest_xy , (cx,cy), (20,200,20), 1)
         if len(anchors_map) == 3:
-           measure = ( round(anchors_map.keys()[0]*10.0, 3),
-		   round(anchors_map.keys()[1]*10.0, 3),
-		   round(anchors_map.keys()[2]*10.0, 3))
-           avg = round( (measure[0] + measure[1] + measure[2] )/3.0 , 3)
-           cv2.putText(img, str(avg), (2,58), cv2.FONT_HERSHEY_SIMPLEX, 0.3, 255)
+           measure = ( round(anchors_map.keys()[0]*10.0, 1),
+		   round(anchors_map.keys()[1]*10.0, 1),
+		   round(anchors_map.keys()[2]*10.0, 1))
+           avg = round( (measure[0] + measure[1] + measure[2] )/3.0 , 1)
+           text = str(measure[0])+' '+str(measure[1])+' '+str(measure[2])
+           cv2.putText(img, text, (2,58), cv2.FONT_HERSHEY_COMPLEX_SMALL, 0.5, 255)
            print sorted(measure)
            print avg
         break
