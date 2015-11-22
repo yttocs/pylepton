@@ -95,15 +95,20 @@ def detect(filename,text):
                 if len(anchors_map) < N:
                     anchors_map[d] = dist_map[d]
         #Draw the anchor lines
+        firstline=False
         for d in sorted(anchors_map):
             closest_xy = (anchors_map[d][0][0],anchors_map[d][0][1])
             cv2.circle(img,closest_xy , 1, (20,200,20), 1)
-            cv2.line(img, closest_xy , (cx,cy), (20,200,20), 1)
+            if firstline == False:
+               firstline = True
+               cv2.line(img, closest_xy , (cx,cy), (0,100,0), 1)
+            else:
+               cv2.line(img, closest_xy , (cx,cy), (0,200,0), 1)
         if len(anchors_map) == 3:
            measure = ( round(anchors_map.keys()[0]*10.0, 1),
 		   round(anchors_map.keys()[1]*10.0, 1),
 		   round(anchors_map.keys()[2]*10.0, 1))
-           avg = round( (measure[0] + measure[1] + measure[2] )/3.0 , 1)
+           avg = round( (measure[0] + measure[1] + measure[2] )/3.0 , 2)
            print sorted(measure)
            print avg
            if text == "Y":
